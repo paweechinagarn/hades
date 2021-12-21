@@ -9,8 +9,7 @@ namespace Hades
         [SerializeField] private GameObject hitter;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private float duration;
-
-        private Coroutine countdownCoroutine;
+        [SerializeField] private int damage;
 
         private void Awake()
         {
@@ -23,13 +22,12 @@ namespace Hades
             hitter.transform.position = spawnPoint.position;
             hitter.transform.forward = unit.forward;
             hitter.SetActive(true);
-            countdownCoroutine = StartCoroutine(Countdown());
+            StartCoroutine(Countdown());
         }
 
-        public void Hit()
+        public void Hit(Damagable damagable)
         {
-            StopCoroutine(countdownCoroutine);
-            hitter.SetActive(false);
+            if (damagable != null) damagable.TakeDamage(damage);
         }
 
         private IEnumerator Countdown()

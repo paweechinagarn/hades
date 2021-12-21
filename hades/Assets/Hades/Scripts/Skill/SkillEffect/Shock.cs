@@ -27,7 +27,6 @@ namespace Hades
                 damagable.TakeDamage(damage);
             }
 
-
             yield break;
         }
     }

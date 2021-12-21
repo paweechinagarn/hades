@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Hades
 {
-    public interface IAttack
+    public interface IAttackable
     {
         void Attack();
         void Hit(GameObject hitbox, Damagable damagable);

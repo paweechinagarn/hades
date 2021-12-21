@@ -7,13 +7,9 @@ namespace Hades
     {
         [SerializeField] private Rigidbody rigidBody;
         [SerializeField] private float speed;
-        [SerializeField] private float dashSpeed;
-        [SerializeField] private float dashTime;
 
         private Vector3 forward;
         private Vector3 right;
-
-        private bool isMoving;
         private bool isDashing;
 
         private void Awake()
@@ -37,23 +33,9 @@ namespace Hades
             rigidBody.MovePosition(rigidBody.position + (speed * rotation * Time.deltaTime));
         }
 
-        public void Dash()
+        public void OnDash(bool isDashing)
         {
-            StartCoroutine(DashInternal());
-        }
-
-        private IEnumerator DashInternal()
-        {
-            isDashing = true;
-            float startTime = Time.time;
-
-            while (Time.time < startTime + dashTime)
-            {
-                rigidBody.MovePosition(rigidBody.position + (dashSpeed * transform.forward * Time.deltaTime));
-                yield return null;
-            }
-
-            isDashing = false;
+            this.isDashing = isDashing;
         }
     }
 }

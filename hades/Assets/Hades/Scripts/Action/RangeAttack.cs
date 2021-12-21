@@ -2,12 +2,17 @@ using UnityEngine;
 
 namespace Hades
 {
-    public class RangeAttack : MonoBehaviour, IAttack
+    public class RangeAttack : MonoBehaviour, IAction, IAttackable
     {
         [SerializeField] private Transform unit;
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private int damage;
+
+        public void DoAction()
+        {
+            Attack();
+        }
 
         public void Attack()
         {

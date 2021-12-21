@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hades
@@ -15,7 +13,7 @@ namespace Hades
 
         public void ApplyEffect(GameObject _, Damagable damagable)
         {
-            StartCoroutine(skillEffect.Apply(damagable));
+            if (skillEffect != null) StartCoroutine(skillEffect.Apply(damagable));
         }
     }
 }

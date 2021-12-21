@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Hades
 {
-    public class MeleeAttack : MonoBehaviour, IAttack
+    public class MeleeAttack : MonoBehaviour, IAction, IAttackable
     {
         [SerializeField] private Transform unit;
         [SerializeField] private GameObject hitbox;
@@ -15,6 +15,11 @@ namespace Hades
         {
             hitbox.transform.parent = null;
             hitbox.SetActive(false);
+        }
+
+        public void DoAction()
+        {
+            Attack();
         }
 
         public void Attack()

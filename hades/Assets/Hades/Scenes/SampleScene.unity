@@ -313,6 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 325179960}
+  - component: {fileID: 325179961}
   m_Layer: 0
   m_Name: RangeAttack
   m_TagString: Untagged
@@ -332,9 +333,26 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1107114936}
+  - {fileID: 587117859}
   m_Father: {fileID: 706049058}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &325179961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325179959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68156d029485f74894112e1ce6df0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 706049058}
+  projectilePrefab: {fileID: 587117860}
+  spawnPoint: {fileID: 1107114936}
+  damage: 3
 --- !u!1 &377854969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8020067934514462017, guid: 044c29dd5ea1c9848886c426ba81c74a, type: 3}
@@ -376,6 +394,16 @@ Transform:
   m_Father: {fileID: 758527222}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+--- !u!4 &587117859 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+  m_PrefabInstance: {fileID: 1818548083203456854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &587117860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8534821106988463925, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+  m_PrefabInstance: {fileID: 1818548083203456854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +675,19 @@ MonoBehaviour:
         m_CallState: 2
   RangeActionEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 325179961}
+        m_TargetAssemblyTypeName: Hades.RangeAttack, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   DashActionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -756,10 +796,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 706049058}
-  hitter: {fileID: 377854969}
+  hitbox: {fileID: 377854969}
   spawnPoint: {fileID: 713876874}
   duration: 0.25
-  damage: 1
+  damage: 4
 --- !u!1 &1107114935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,6 +1384,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 130, z: 90}
+--- !u!1001 &1818548083203456854
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 325179960}
+    m_Modifications:
+    - target: {fileID: 3786422885614137547, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: HitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 325179961}
+    - target: {fileID: 8534821106988463925, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_Name
+      value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463925, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
 --- !u!1001 &2487896295558050347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1398,10 +1503,6 @@ PrefabInstance:
     - target: {fileID: 2487896295038226655, guid: fd25e40716d8a7d4a8c4ac82c24c3976, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2487896295038226655, guid: fd25e40716d8a7d4a8c4ac82c24c3976, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd25e40716d8a7d4a8c4ac82c24c3976, type: 3}

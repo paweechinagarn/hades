@@ -5,7 +5,7 @@ using UnityEngine.Events;
 namespace Hades
 {
     [Serializable]
-    public class HitEvent : UnityEvent<Damagable> { }
+    public class HitEvent : UnityEvent<GameObject, Damagable> { }
 
     public class Hitbox : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace Hades
             Debug.Log($"Hit {other.name}");
 
             Damagable damagable = other.GetComponent<Damagable>();
-            HitEvent?.Invoke(damagable);
+            HitEvent?.Invoke(gameObject, damagable);
         }
     }
 }

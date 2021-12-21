@@ -4,6 +4,7 @@ namespace Hades
 {
     public class Damagable : MonoBehaviour
     {
+        [SerializeField] private GameObject unit;
         [SerializeField] private int maxHealth;
         [SerializeField] private int health;
         
@@ -34,13 +35,13 @@ namespace Hades
         public void Die()
         {
             isDead = true;
-            Debug.Log($"{name} dies.");
+            Debug.Log($"{unit.name} dies.");
             Despawn();
         }
 
         private void Despawn()
         {
-            Destroy(gameObject);
+            Destroy(unit);
         }
     }
 }

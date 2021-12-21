@@ -6,26 +6,26 @@ namespace Hades
     public class MeleeAttack : MonoBehaviour, IAttack
     {
         [SerializeField] private Transform unit;
-        [SerializeField] private GameObject hitter;
+        [SerializeField] private GameObject hitbox;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private float duration;
         [SerializeField] private int damage;
 
         private void Awake()
         {
-            hitter.transform.parent = null;
-            hitter.SetActive(false);
+            hitbox.transform.parent = null;
+            hitbox.SetActive(false);
         }
 
         public void Attack()
         {
-            hitter.transform.position = spawnPoint.position;
-            hitter.transform.forward = unit.forward;
-            hitter.SetActive(true);
+            hitbox.transform.position = spawnPoint.position;
+            hitbox.transform.forward = unit.forward;
+            hitbox.SetActive(true);
             StartCoroutine(Countdown());
         }
 
-        public void Hit(Damagable damagable)
+        public void Hit(GameObject hitbox, Damagable damagable)
         {
             if (damagable != null) damagable.TakeDamage(damage);
         }
@@ -33,7 +33,7 @@ namespace Hades
         private IEnumerator Countdown()
         {
             yield return new WaitForSeconds(duration);
-            hitter.SetActive(false);
+            hitbox.SetActive(false);
         }
     }
 }

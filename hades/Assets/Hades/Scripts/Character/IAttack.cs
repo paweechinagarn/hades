@@ -1,8 +1,10 @@
+using UnityEngine;
+
 namespace Hades
 {
     public interface IAttack
     {
         void Attack();
-        void Hit();
+        void Hit(GameObject hitbox, Damagable damagable);
     }
 }

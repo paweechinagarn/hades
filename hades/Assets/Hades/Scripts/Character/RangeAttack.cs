@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 namespace Hades
@@ -6,28 +5,32 @@ namespace Hades
     public class RangeAttack : MonoBehaviour, IAttack
     {
         [SerializeField] private Transform unit;
-        [SerializeField] private GameObject projectile;
+        [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform spawnPoint;
-
-        private Coroutine countdownCoroutine;
-
-        private void Awake()
-        {
-            projectile.transform.parent = null;
-            projectile.SetActive(false);
-        }
+        [SerializeField] private int damage;
 
         public void Attack()
         {
+            Spawn();
+        }
+
+        public void Hit(GameObject hitbox, Damagable damagable)
+        {
+            if (damagable != null) damagable.TakeDamage(damage);
+            Despawn(hitbox);
+        }
+
+        private void Spawn()
+        {
+            GameObject projectile = Instantiate(projectilePrefab);
             projectile.transform.position = spawnPoint.position;
             projectile.transform.forward = unit.forward;
             projectile.SetActive(true);
         }
 
-        public void Hit()
+        private void Despawn(GameObject projectile)
         {
-            StopCoroutine(countdownCoroutine);
-            projectile.SetActive(false);
+            Destroy(projectile);
         }
     }
 }

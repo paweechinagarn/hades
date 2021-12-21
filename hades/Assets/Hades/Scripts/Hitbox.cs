@@ -13,8 +13,6 @@ namespace Hades
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"Hit {other.name}");
-
             Damagable damagable = other.GetComponent<Damagable>();
             HitEvent?.Invoke(gameObject, damagable);
         }

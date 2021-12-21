@@ -25,9 +25,13 @@ namespace Hades
             StartCoroutine(Countdown());
         }
 
-        public void Hit(GameObject hitbox, Damagable damagable)
+        public void Hit(GameObject _, Damagable damagable)
         {
-            if (damagable != null) damagable.TakeDamage(damage);
+            if (damagable != null)
+            {
+                Debug.Log($"Melee hit {damagable.Unit.name} with {damage} damage");
+                damagable.TakeDamage(damage);
+            }
         }
 
         private IEnumerator Countdown()

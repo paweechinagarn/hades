@@ -8,7 +8,9 @@ namespace Hades
         [SerializeField] private int maxHealth;
         [SerializeField] private int health;
         
-        private bool isDead;
+        public bool IsDead { get; private set; }
+
+        public GameObject Unit => unit;
 
         private void Awake()
         {
@@ -18,12 +20,12 @@ namespace Hades
         private void Reset()
         {
             health = maxHealth;
-            isDead = false;
+            IsDead = false;
         }
 
         public void TakeDamage(int damage)
         {
-            if (isDead) return;
+            if (IsDead) return;
 
             health -= damage;
             if (health <= 0)
@@ -34,7 +36,7 @@ namespace Hades
 
         public void Die()
         {
-            isDead = true;
+            IsDead = true;
             Debug.Log($"{unit.name} dies.");
             Despawn();
         }

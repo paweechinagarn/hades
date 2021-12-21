@@ -16,7 +16,12 @@ namespace Hades
 
         public void Hit(GameObject hitbox, Damagable damagable)
         {
-            if (damagable != null) damagable.TakeDamage(damage);
+            if (damagable != null)
+            {
+                Debug.Log($"Range hit {damagable.Unit.name} with {damage} damage");
+                damagable.TakeDamage(damage);
+            }
+
             Despawn(hitbox);
         }
 

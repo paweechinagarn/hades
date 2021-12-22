@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Hades
 {
@@ -16,6 +17,8 @@ namespace Hades
 
         private void Update()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+
             ProcessMovementInput();
             ProcessActionInput();
         }

@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a58ad8a63ae994a9631a6d0b4e8b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillEffect: {fileID: 11400000, guid: a31539039dad42b4984e623719b5538f, type: 2}
+  skillEffect: {fileID: 0}
 --- !u!1001 &6641619132297167053
 PrefabInstance:
   m_ObjectHideFlags: 0

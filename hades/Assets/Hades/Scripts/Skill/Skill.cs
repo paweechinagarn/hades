@@ -1,19 +1,12 @@
-using UnityEngine;
+using System;
 
 namespace Hades
 {
-    public class Skill : MonoBehaviour
+    [Serializable]
+    public class Skill
     {
-        [SerializeField] private SkillEffect skillEffect;
-
-        public void SetEffect()
-        {
-
-        }
-
-        public void ApplyEffect(GameObject _, Damagable damagable)
-        {
-            if (skillEffect != null) StartCoroutine(skillEffect.Apply(damagable));
-        }
+        public int Id;
+        public ActionType ActionType;
+        public SkillEffect SkillEffect;
     }
 }

@@ -33,6 +33,7 @@ namespace Hades
 
             enemy.transform.position = spawnPosition;
             enemy.DieEvent.AddListener(Despawn);
+            enemy.Reset();
             enemies.Add(enemy);
         }
 

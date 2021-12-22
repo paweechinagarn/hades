@@ -29,7 +29,7 @@ namespace Hades
             hitbox.SetActive(true);
             StartCoroutine(CountdownHitBoxDuration());
             StartCoroutine(Cooldown());
-            Debug.Log("Melee");
+            Debug.Log($"{unit.name} does melee attack");
         }
 
         public override void Hit(GameObject _, Damagable damagable)

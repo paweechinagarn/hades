@@ -30,12 +30,12 @@ namespace Hades
                 if (other == null || other.Unit == unit || other.Unit.IsDead) continue;
                 if (other.Unit == Target) return;
 
-                Debug.Log($"{unit.name} is targeting {other.Unit.name}");
+                //Debug.Log($"{unit.name} is targeting {other.Unit.name}");
                 newTarget = other.Unit;
                 break;
             }
 
-            if (newTarget == null && Target != null) Debug.Log($"{unit.name} is losing target {Target.name}");
+            //if (newTarget == null && Target != null) Debug.Log($"{unit.name} is losing target {Target.name}");
             Target = newTarget;
         }
 

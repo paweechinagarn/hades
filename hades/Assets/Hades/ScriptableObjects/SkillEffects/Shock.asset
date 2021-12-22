@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2047316a03b4acb4fa76346213ce25f5, type: 3}
   m_Name: Shock
   m_EditorClassIdentifier: 
-  damage: 1
-  radius: 5
+  damage: 2
+  radius: 10
   layerMask:
     serializedVersion: 2
     m_Bits: 128

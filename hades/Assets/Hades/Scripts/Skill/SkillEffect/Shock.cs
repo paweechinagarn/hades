@@ -24,7 +24,7 @@ namespace Hades
                 if (other == null || other == damagable) continue;
 
                 Debug.Log($"Shock {other.Unit.name} with {damage} damage");
-                damagable.TakeDamage(damage);
+                other.TakeDamage(damage);
             }
 
             yield break;

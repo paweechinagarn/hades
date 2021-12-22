@@ -12,6 +12,7 @@ namespace Hades
     {
         [SerializeField] private Rigidbody rigidBody;
         [SerializeField] private Collider characterCollider;
+        [SerializeField] private Collider damagable;
         [SerializeField] private GameObject hitbox;
         [SerializeField] private float speed;
         [SerializeField] private float time;
@@ -25,6 +26,7 @@ namespace Hades
             {
                 isDashing = value;
                 characterCollider.enabled = !value;
+                damagable.gameObject.SetActive(!value);
                 hitbox.SetActive(value);
                 DashEvent?.Invoke(value);
             }
@@ -39,7 +41,7 @@ namespace Hades
         {
             if (isDashing) return;
             StartCoroutine(DashInternal());
-            Debug.Log("Dash");
+            Debug.Log($"{name} dashes");
         }
 
         private IEnumerator DashInternal()

@@ -33,7 +33,7 @@ namespace Hades
             Reset();
         }
 
-        private void Reset()
+        public void Reset()
         {
             Health = stats.MaxHealth;
             IsDead = false;

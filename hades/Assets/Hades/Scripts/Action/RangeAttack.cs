@@ -18,7 +18,7 @@ namespace Hades
             if (IsOnCooldown) return;
             Spawn();
             StartCoroutine(Cooldown());
-            Debug.Log("Range");
+            Debug.Log($"{unit.name} does range attack");
         }
 
         public override void Hit(GameObject hitbox, Damagable damagable)

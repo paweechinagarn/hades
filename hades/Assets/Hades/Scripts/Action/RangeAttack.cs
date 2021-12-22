@@ -4,7 +4,7 @@ namespace Hades
 {
     public class RangeAttack : BaseAttack, IAction
     {
-        [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private string projectilePoolName;
         [SerializeField] private Transform spawnPoint;
 
         public void DoAction()
@@ -30,15 +30,19 @@ namespace Hades
 
         private void Spawn()
         {
-            GameObject projectile = Instantiate(projectilePrefab);
+            GameObject pooledObject = ObjectPoolManager.Instance.Get(projectilePoolName);
+            Projectile projectile = pooledObject.GetComponent<Projectile>();
             projectile.transform.position = spawnPoint.position;
             projectile.transform.forward = unit.transform.forward;
-            projectile.SetActive(true);
+            projectile.gameObject.SetActive(true);
+            projectile.DespawnEvent.AddListener(Despawn);
         }
 
-        private void Despawn(GameObject projectile)
+        private void Despawn(GameObject hitbox)
         {
-            Destroy(projectile);
+            Projectile projectile = hitbox.GetComponent<Projectile>();
+            projectile.DespawnEvent.RemoveListener(Despawn);
+            ObjectPoolManager.Instance.Return(hitbox);
         }
     }
 }

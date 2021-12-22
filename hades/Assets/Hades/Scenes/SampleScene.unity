@@ -123,6 +123,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: f750737a0093b5f4e9c4380e322bb01e, type: 2}
+--- !u!1 &22630050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22630051}
+  - component: {fileID: 22630052}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &22630051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22630050}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57822982}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &22630052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22630050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ac06fd62772b9408e56db9b5263f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectPools:
+  - Name: MeleeEnemy
+    Prefab: {fileID: 9079388739448083182, guid: b907a396be527444c883d6501136aa34, type: 3}
+    Amount: 2
+  - Name: BigMeleeEnemy
+    Prefab: {fileID: 4158788253632589982, guid: 6f0526466a1e6c54694a90860ae0811f, type: 3}
+    Amount: 2
+  - Name: Projectile
+    Prefab: {fileID: 2424469614268786337, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
+    Amount: 5
 --- !u!1 &36627931
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +280,7 @@ Transform:
   m_Children:
   - {fileID: 758527222}
   - {fileID: 964622389}
+  - {fileID: 22630051}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1264,7 +1318,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 964622390}
         m_TargetAssemblyTypeName: Hades.SpawnManager, Assembly-CSharp
-        m_MethodName: SpawnEnemy
+        m_MethodName: SpawnAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2997,9 +3051,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 964622389}
-  enemyPrefabs:
-  - {fileID: 4669607294679123922, guid: b907a396be527444c883d6501136aa34, type: 3}
-  - {fileID: 539107103336719778, guid: 6f0526466a1e6c54694a90860ae0811f, type: 3}
+  enemyPoolNames:
+  - MeleeEnemy
+  - BigMeleeEnemy
   enemyCount: 3
   spawnPoint: {fileID: 964622389}
   spawnRadius: 15

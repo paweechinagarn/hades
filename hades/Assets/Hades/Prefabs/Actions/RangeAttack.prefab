@@ -77,9 +77,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  projectilePrefab: {fileID: 3051756072819718136}
-  spawnPoint: {fileID: 4978450874489685027}
   damage: 3
+  attackSpeed: 1
+  projectilePoolName: Projectile
+  spawnPoint: {fileID: 4978450874489685027}
 --- !u!114 &4978450875856725409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a58ad8a63ae994a9631a6d0b4e8b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 0}
   skillEffect: {fileID: 0}
 --- !u!1001 &6641619132297167053
 PrefabInstance:
@@ -186,11 +188,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
---- !u!1 &3051756072819718136 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8534821106988463925, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}
-  m_PrefabInstance: {fileID: 6641619132297167053}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3051756072819718139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8534821106988463926, guid: 57e5402837b9ee04599ae9e429d5db2d, type: 3}

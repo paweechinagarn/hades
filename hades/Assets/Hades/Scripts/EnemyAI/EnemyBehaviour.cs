@@ -47,7 +47,7 @@ namespace Hades
             if (displacement.sqrMagnitude < attackRange * attackRange)
             {
                 agent.isStopped = true;
-                if (!attackable.IsOnCooldown) attackable.Attack();
+                if (attackable != null && !attackable.IsOnCooldown) attackable.Attack();
             }
             else
             {

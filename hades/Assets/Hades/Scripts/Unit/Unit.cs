@@ -5,7 +5,7 @@ using UnityEngine.Events;
 namespace Hades
 {
     [Serializable]
-    public class HealthEvent : UnityEvent<int> { }
+    public class HealthEvent : UnityEvent<int, int> { }
 
     [Serializable]
     public class DieEvent : UnityEvent<Unit> { }
@@ -23,7 +23,7 @@ namespace Hades
             set
             {
                 health = value;
-                HealthEvent?.Invoke(health);
+                HealthEvent?.Invoke(health, stats.MaxHealth);
             }
         }
         public bool IsDead { get; private set; }

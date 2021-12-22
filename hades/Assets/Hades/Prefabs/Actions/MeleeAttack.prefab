@@ -51,6 +51,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 7356875735283571362}
   duration: 0.25
   damage: 4
+  attackSpeed: 1
 --- !u!114 &7356875735078994176
 MonoBehaviour:
   m_ObjectHideFlags: 0

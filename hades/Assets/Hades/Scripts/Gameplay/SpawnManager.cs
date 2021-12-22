@@ -6,7 +6,7 @@ namespace Hades
     public class SpawnManager : MonoBehaviour
     {
         [SerializeField] private Transform container;
-        [SerializeField] private Unit enemyPrefab;
+        [SerializeField] private Unit[] enemyPrefabs;
         [SerializeField] private int enemyCount;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private float spawnRadius;
@@ -19,7 +19,7 @@ namespace Hades
             {
                 Vector3 spawnPosition = Random.insideUnitSphere * spawnRadius;
                 spawnPosition.y = 0f;
-                Unit enemy = Instantiate(enemyPrefab, container);
+                Unit enemy = Instantiate(enemyPrefabs[i % enemyPrefabs.Length], container);
                 enemy.transform.position = spawnPosition;
                 enemy.DieEvent.AddListener(Despawn);
                 enemies.Add(enemy);

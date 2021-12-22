@@ -4,6 +4,7 @@ namespace Hades
 {
     public class CharacterSkill : MonoBehaviour
     {
+        [SerializeField] private Unit unit;
         [SerializeField] private SkillEffect skillEffect;
 
         public void SetEffect(SkillEffect skillEffect)
@@ -13,6 +14,7 @@ namespace Hades
 
         public void ApplyEffect(GameObject _, Damagable damagable)
         {
+            if (damagable == null || damagable.Unit == unit) return;
             if (skillEffect != null) StartCoroutine(skillEffect.Apply(damagable));
         }
     }

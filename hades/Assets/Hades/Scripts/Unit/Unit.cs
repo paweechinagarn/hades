@@ -5,15 +5,27 @@ using UnityEngine.Events;
 namespace Hades
 {
     [Serializable]
+    public class HealthEvent : UnityEvent<int> { }
+
+    [Serializable]
     public class DieEvent : UnityEvent<Unit> { }
 
     public class Unit : MonoBehaviour
     {
-        [SerializeField] private int maxHealth;
+        [SerializeField] private Stats stats;
         [SerializeField] private int health;
 
+        public HealthEvent HealthEvent;
         public DieEvent DieEvent;
 
+        public int Health
+        {
+            set
+            {
+                health = value;
+                HealthEvent?.Invoke(health);
+            }
+        }
         public bool IsDead { get; private set; }
 
         private void Awake()
@@ -23,7 +35,7 @@ namespace Hades
 
         private void Reset()
         {
-            health = maxHealth;
+            Health = stats.MaxHealth;
             IsDead = false;
         }
 
@@ -31,7 +43,8 @@ namespace Hades
         {
             if (IsDead) return;
 
-            health -= damage;
+            Health = Mathf.Max(0, health - damage);
+
             if (health <= 0)
             {
                 Die();

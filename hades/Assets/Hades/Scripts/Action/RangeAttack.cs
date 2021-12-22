@@ -2,39 +2,37 @@ using UnityEngine;
 
 namespace Hades
 {
-    public class RangeAttack : MonoBehaviour, IAction, IAttackable
+    public class RangeAttack : BaseAttack, IAction
     {
-        [SerializeField] private Transform unit;
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform spawnPoint;
-        [SerializeField] private int damage;
 
         public void DoAction()
         {
             Attack();
         }
 
-        public void Attack()
+        public override void Attack()
         {
+            if (IsOnCooldown) return;
             Spawn();
         }
 
-        public void Hit(GameObject hitbox, Damagable damagable)
+        public override void Hit(GameObject hitbox, Damagable damagable)
         {
-            if (damagable != null)
-            {
-                Debug.Log($"Range hit {damagable.Unit.name} with {damage} damage");
-                damagable.TakeDamage(damage);
-            }
-
             Despawn(hitbox);
+
+            if (damagable == null || damagable.Unit == unit || damagable.Unit.IsDead) return;
+
+            Debug.Log($"{unit.name} range hits {damagable.Unit.name} with {damage} damage");
+            damagable.TakeDamage(damage);
         }
 
         private void Spawn()
         {
             GameObject projectile = Instantiate(projectilePrefab);
             projectile.transform.position = spawnPoint.position;
-            projectile.transform.forward = unit.forward;
+            projectile.transform.forward = unit.transform.forward;
             projectile.SetActive(true);
         }
 

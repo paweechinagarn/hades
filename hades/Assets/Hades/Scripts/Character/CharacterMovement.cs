@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 namespace Hades
@@ -22,8 +21,12 @@ namespace Hades
 
         public void Move(Vector3 movement)
         {
-            if (movement == Vector3.zero) return;
             if (isDashing) return;
+            if (movement == Vector3.zero)
+            {
+                rigidBody.velocity = Vector3.zero;
+                return;
+            }
 
             Vector3 rightMovement = right * movement.x;
             Vector3 upMovement = forward * movement.z;

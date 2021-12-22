@@ -26,7 +26,7 @@ namespace Hades
             {
                 isDashing = value;
                 characterCollider.enabled = !value;
-                damagable.gameObject.SetActive(!value);
+                damagable.enabled = !value;
                 hitbox.SetActive(value);
                 DashEvent?.Invoke(value);
             }

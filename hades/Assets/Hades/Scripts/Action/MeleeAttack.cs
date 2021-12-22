@@ -34,7 +34,7 @@ namespace Hades
 
         public override void Hit(GameObject _, Damagable damagable)
         {
-            if (damagable == null || damagable.Unit == unit || damagable.Unit.IsDead) return;
+            if (damagable == null || damagable.Unit == unit || damagable.Unit.IsDead || damagable.Unit.gameObject.layer == unit.gameObject.layer) return;
 
             Debug.Log($"{unit.name} melee hits {damagable.Unit.name} with {damage} damage");
             damagable.TakeDamage(damage);

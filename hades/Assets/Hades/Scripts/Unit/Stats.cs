@@ -6,8 +6,5 @@ namespace Hades
     public struct Stats
     {
         public int MaxHealth;
-        public float AttackSpeed;
-        public int BaseDamage;
-        public float AttackRange;
     }
 }

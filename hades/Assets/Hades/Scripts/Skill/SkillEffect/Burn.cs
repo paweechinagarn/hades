@@ -17,7 +17,7 @@ namespace Hades
 
             while (Time.time < startTime + duration)
             {
-                if (damagable.IsDead) yield break;
+                if (damagable.Unit.IsDead) yield break;
 
                 Debug.Log($"Burn {damagable.Unit.name} with {damageOverTime} damage");
                 damagable.TakeDamage(damageOverTime);

@@ -35,17 +35,14 @@ namespace Hades
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Melee");
                 MeleeActionEvent?.Invoke();
             }
             if (Input.GetMouseButtonDown(1))
             {
-                Debug.Log("Range");
                 RangeActionEvent?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("Dash");
                 DashActionEvent?.Invoke();
             }
         }

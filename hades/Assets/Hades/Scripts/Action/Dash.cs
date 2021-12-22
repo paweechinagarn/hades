@@ -39,6 +39,7 @@ namespace Hades
         {
             if (isDashing) return;
             StartCoroutine(DashInternal());
+            Debug.Log("Dash");
         }
 
         private IEnumerator DashInternal()

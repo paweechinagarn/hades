@@ -29,6 +29,7 @@ namespace Hades
             hitbox.SetActive(true);
             StartCoroutine(CountdownHitBoxDuration());
             StartCoroutine(Cooldown());
+            Debug.Log("Melee");
         }
 
         public override void Hit(GameObject _, Damagable damagable)

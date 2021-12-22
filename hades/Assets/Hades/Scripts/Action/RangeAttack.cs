@@ -6,6 +6,7 @@ namespace Hades
     {
         [SerializeField] private string projectilePoolName;
         [SerializeField] private Transform spawnPoint;
+        [SerializeField] private CharacterSkill characterSkill;
 
         public void DoAction()
         {
@@ -16,16 +17,17 @@ namespace Hades
         {
             if (IsOnCooldown) return;
             Spawn();
+            StartCoroutine(Cooldown());
+            Debug.Log("Range");
         }
 
         public override void Hit(GameObject hitbox, Damagable damagable)
         {
-            Despawn(hitbox);
-
             if (damagable == null || damagable.Unit == unit || damagable.Unit.IsDead) return;
 
             Debug.Log($"{unit.name} range hits {damagable.Unit.name} with {damage} damage");
             damagable.TakeDamage(damage);
+            Despawn(hitbox);
         }
 
         private void Spawn()
@@ -36,13 +38,22 @@ namespace Hades
             projectile.transform.forward = unit.transform.forward;
             projectile.gameObject.SetActive(true);
             projectile.DespawnEvent.AddListener(Despawn);
+
+            Hitbox hitbox = pooledObject.GetComponent<Hitbox>();
+            hitbox.HitEvent.AddListener(Hit);
+            hitbox.HitEvent.AddListener(characterSkill.ApplyEffect);
         }
 
-        private void Despawn(GameObject hitbox)
+        private void Despawn(GameObject pooledObject)
         {
-            Projectile projectile = hitbox.GetComponent<Projectile>();
+            Projectile projectile = pooledObject.GetComponent<Projectile>();
             projectile.DespawnEvent.RemoveListener(Despawn);
-            ObjectPoolManager.Instance.Return(hitbox);
+
+            Hitbox hitbox = pooledObject.GetComponent<Hitbox>();
+            hitbox.HitEvent.RemoveListener(Hit);
+            hitbox.HitEvent.RemoveListener(characterSkill.ApplyEffect);
+
+            ObjectPoolManager.Instance.Return(pooledObject);
         }
     }
 }

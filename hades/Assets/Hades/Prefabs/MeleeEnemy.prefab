@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9079388739448083183}
     m_Modifications:
+    - target: {fileID: 1457277734416683989, guid: d1fcd746f3a335648862c0e8efde0212, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457277734416683989, guid: d1fcd746f3a335648862c0e8efde0212, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7356875735078994176, guid: d1fcd746f3a335648862c0e8efde0212, type: 3}
       propertyPath: unit
       value: 
@@ -65,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 4669607294679123922}
     - target: {fileID: 7356875735078994191, guid: d1fcd746f3a335648862c0e8efde0212, type: 3}
       propertyPath: attackSpeed
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1fcd746f3a335648862c0e8efde0212, type: 3}
@@ -91,6 +99,10 @@ PrefabInstance:
       propertyPath: attackableComponent
       value: 
       objectReference: {fileID: 4828025489531544400}
+    - target: {fileID: 954494153023680158, guid: fd25e40716d8a7d4a8c4ac82c24c3976, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2038855831223764451, guid: fd25e40716d8a7d4a8c4ac82c24c3976, type: 3}
       propertyPath: stats.MaxHealth
       value: 10

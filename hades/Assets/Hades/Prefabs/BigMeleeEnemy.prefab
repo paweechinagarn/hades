@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3540113505147564426, guid: b907a396be527444c883d6501136aa34, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4669607294679123922, guid: b907a396be527444c883d6501136aa34, type: 3}
       propertyPath: stats.MaxHealth
       value: 20
@@ -21,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4828025489531544400, guid: b907a396be527444c883d6501136aa34, type: 3}
       propertyPath: attackSpeed
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9079388739448083182, guid: b907a396be527444c883d6501136aa34, type: 3}
       propertyPath: m_Name
-      value: MeleeEnemyHuge
+      value: BigMeleeEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 9079388739448083183, guid: b907a396be527444c883d6501136aa34, type: 3}
       propertyPath: m_RootOrder
